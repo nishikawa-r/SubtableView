@@ -40,7 +40,7 @@
 
 #test_ul {
   position: relative;
-  left: -20px;
+  left: -30px;
   list-style: none;
 }
 
@@ -58,14 +58,14 @@
   height: 40px;
   position: absolute;
   /* top: 14px; */
-  background-color: #e3e3e381;
+  background-color: #d7d7d781;
   background-position: center center;
   background-repeat: no-repeat;
   border-radius: 50%;
 }
 
 #csv .st0 {
-  fill: #a4a4a4;
+  fill: #a7a7a7;
 }
 
 #test_ul .test #csv svg {
