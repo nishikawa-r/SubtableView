@@ -64,18 +64,18 @@
     },
     ab: function (response) {
       console.log(response);
-      subtablePlugin.fields.data = [];
+      this.fields.data = [];
       response.records.forEach((ele) => {
         let vbnet = ele.活動報告テーブル.value.filter((sub) => {
-          return (sub.value[subtablePlugin.settings.fil[1]].value == subtablePlugin.fields.number)
+          return (sub.value[this.settings.fil[1]].value == this.fields.number)
         });
         vbnet.forEach((vpn, index) => {
           let cvp = [];
-          let copyUrl = subtablePlugin.fields.url + ele.レコード番号.value;
-          console.log(subtablePlugin.settings.columns[1]);
-          subtablePlugin.settings.columns.forEach((text, inn) => {
+          let copyUrl = this.fields.url + ele.レコード番号.value;
+          console.log(this.settings.columns[1]);
+          this.settings.columns.forEach((text, inn) => {
             if (inn == 0) {
-              cvp[inn] = `<a href="${copyUrl}" target="blank">${subtablePlugin.settings.svg}</a>`;
+              cvp[inn] = `<a href="${copyUrl}" target="blank">${this.settings.svg}</a>`;
             }
             else {
               cvp[inn] = vpn.value[text].value;
@@ -84,13 +84,13 @@
           console.log(cvp);
           cvp.forEach((ee, index) => {
             if (index > 0) {
-              subtablePlugin.fields.typeFields[subtablePlugin.settings.columns[index]] = vpn.value[subtablePlugin.settings.columns[index]].type;
+              this.fields.typeFields[this.settings.columns[index]] = vpn.value[this.settings.columns[index]].type;
             }
           })
-          subtablePlugin.fields.data.push(cvp);
+          this.fields.data.push(cvp);
         });
       })
-      return subtablePlugin.fields.data;
+      return this.fields.data;
     },
 
     b: function (body) {
@@ -126,10 +126,10 @@
       });
     },
     sortData: function (sortNo) {
-      if (subtablePlugin.fields.states[sortNo] == "desc") {
-        subtablePlugin.fields.states[sortNo] = "asc"
-        subtablePlugin.fields.data.sort((a, b) => {
-          if (!(subtablePlugin.fields.typeFields[subtablePlugin.settings.columns[sortNo]].indexOf("TEXT"))) {
+      if (this.fields.states[sortNo] == "desc") {
+        this.fields.states[sortNo] = "asc"
+        this.fields.data.sort((a, b) => {
+          if (!(this.fields.typeFields[this.settings.columns[sortNo]].indexOf("TEXT"))) {
             return a[sortNo] - b[sortNo]
           }
           else {
@@ -145,9 +145,9 @@
 
       }
       else {
-        subtablePlugin.fields.states[sortNo] = "desc"
-        subtablePlugin.fields.data.sort((a, b) => {
-          if (!(subtablePlugin.fields.typeFields[subtablePlugin.settings.columns[sortNo]].indexOf("TEXT"))) {
+        this.fields.states[sortNo] = "desc"
+        this.fields.data.sort((a, b) => {
+          if (!(this.fields.typeFields[this.settings.columns[sortNo]].indexOf("TEXT"))) {
             return b[sortNo] - a[sortNo]
           }
           else {
@@ -160,16 +160,16 @@
           }
         });
       }
-      Object.keys(subtablePlugin.fields.states).forEach((key) => {
+      Object.keys(this.fields.states).forEach((key) => {
         console.log(sortNo, key);
         if (key !== String(sortNo)) {
-          subtablePlugin.fields.states[key] = "none";
+          this.fields.states[key] = "none";
         }
       })
-      subtablePlugin.createTable();
+      this.createTable();
     },
     createTable: function () {
-      subtablePlugin.fields.myTable.innerHTML = "";
+      this.fields.myTable.innerHTML = "";
 
       let usertable = document.createElement("table");
       usertable.id = "usertable";
@@ -177,22 +177,22 @@
       let x = 0;
       let a = "";
       let head = document.createElement("tr");
-      console.log(subtablePlugin.settings.columns);
+      console.log(this.settings.columns);
 
-      subtablePlugin.settings.columns.forEach((cl, index) => {
+      this.settings.columns.forEach((cl, index) => {
         let th = document.createElement("th");
-        subtablePlugin.fields.states[index] = (subtablePlugin.fields.states[index]) ? subtablePlugin.fields.states[index] : "none";
+        this.fields.states[index] = (this.fields.states[index]) ? this.fields.states[index] : "none";
         if (index === 0) {
         }
         else {
-          th.addEventListener("click", function () { subtablePlugin.sortData(index); console.log(subtablePlugin.fields.states); });
+          th.addEventListener("click", function () { this.sortData(index); console.log(this.fields.states); });
           let spam = document.createElement("span");
           spam.textContent = cl;
           th.appendChild(spam);
-          if (subtablePlugin.fields.states[index] == "none") {
+          if (this.fields.states[index] == "none") {
             th.innerHTML = th.innerHTML + "<ul style='list-style:none;font-size:10px;'> <li style='padding-bottom:0px;padding-top:0px;' >▲</li > <li style='padding-bottom:0px;padding-top:0px;'>▼</li> </ul > "
           }
-          else if (subtablePlugin.fields.states[index] == "asc") {
+          else if (this.fields.states[index] == "asc") {
             th.innerHTML = th.innerHTML + "<ul style='list-style:none;font-size:10px;'> <li style='padding-bottom:0px;padding-top:0px;' >▲</li > </ul > "
           }
           else {
@@ -204,7 +204,7 @@
       })
       usertable.appendChild(head);
 
-      let cells = subtablePlugin.fields.data;
+      let cells = this.fields.data;
       x = 0;
       a = "";
       let tbody = document.createElement("tbody");
@@ -227,10 +227,10 @@
         tbody.appendChild(tdata);
       });
       usertable.appendChild(tbody);
-      usertable = subtablePlugin.csvTobutton(usertable);
+      usertable = this.csvTobutton(usertable);
       //table1をareaReportFacilityに入れる
       // $(myTable).append(table1);
-      subtablePlugin.fields.myTable.appendChild(usertable);
+      this.fields.myTable.appendChild(usertable);
 
     },
     csvTobutton: function (usertable) {
@@ -245,11 +245,11 @@
 
       let button = document.createElement("a");
       button.id = "csv"
-      button.innerHTML = subtablePlugin.settings.csvSvg;
+      button.innerHTML = this.settings.csvSvg;
       let csvData = "";
-      let col = subtablePlugin.settings.columns.slice(1);
+      let col = this.settings.columns.slice(1);
       csvData += col.join(',') + '\n';
-      subtablePlugin.fields.data.forEach((e) => {
+      this.fields.data.forEach((e) => {
         let ele = e.slice(1);
         csvData += ele.join(',') + '\n';
       })
