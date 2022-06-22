@@ -185,7 +185,10 @@
         if (index === 0) {
         }
         else {
-          th.addEventListener("click", function () { this.sortData(index); console.log(this.fields.states); });
+          let click = function () {
+            this.sortData(index); console.log(this.fields.states);
+          }
+          th.addEventListener("click", click.bind(this));
           let spam = document.createElement("span");
           spam.textContent = cl;
           th.appendChild(spam);
