@@ -1,10 +1,11 @@
 {
   "manifest_version": 1,
-  "version": 1,
+  "version": 4,
   "type": "APP",
   "desktop": {
     "js": [
       "https://js.cybozu.com/jquery/3.3.1/jquery.min.js",
+      "js/svgObj.js",
       "js/desktop.js"
     ],
     "css": [
