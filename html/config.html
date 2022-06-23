@@ -1,16 +1,80 @@
-<section class="settings">
-  <h2 class="settings-heading">Settings for test_tt</h2>
-  <p class="kintoneplugin-desc">This message is displayed on the app page after the app has been updated.</p>
-  <form class="js-submit-settings">
-    <p class="kintoneplugin-row">
-      <label for="message">
-        Message:
-        <input type="text" class="js-text-message kintoneplugin-input-text">
-      </label>
-    </p>
-    <p class="kintoneplugin-row">
-        <button type="button" class="js-cancel-button kintoneplugin-button-dialog-cancel">Cancel</button>
-        <button class="kintoneplugin-button-dialog-ok">Save</button>
-    </p>
-  </form>
-</section>
+<!DOCUTYPE html>
+  <html lang="ja">
+  <meta charset="utf-8">
+
+  <head>
+    <style type="text/css">
+      .kintoneplugin-table {
+        margin-left: 0px;
+      }
+    </style>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js">
+    </script>
+    <script type="text/javascript">
+      'use strict';
+
+    </script>
+
+  <body>
+
+    <div class="kintoneplugin-label">設定画面入力フォーム</div>
+    <form action="#" method="post">
+
+      <br>
+      <div class="kintoneplugin-title">サブテーブル取得元アプリ</div>
+      <div class="kintoneplugin-select-outer">
+        <div class="kintoneplugin-select">
+          <select id="subtable-app">
+          </select>
+        </div>
+      </div>
+      <br>
+      <br>
+      <div class="kintoneplugin-title">配置スペースフィールド</div>
+      <div class="kintoneplugin-select-outer">
+        <div class="kintoneplugin-select">
+          <select id="spacefield">
+          </select>
+        </div>
+      </div>
+      <br>
+      <br>
+      <div class="kintoneplugin-title">サブテーブル表示フィールド</div>
+      <table class="kintoneplugin-table">
+        <thead>
+          <tr>
+            <th class="kintoneplugin-table-th"><span class="title">フィールド名</span></th>
+            <th class="kintoneplugin-table-th-blankspace"></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="test">
+            <td>
+              <div class="kintoneplugin-select-outer">
+                <div class="kintoneplugin-select">
+                  <select class="pinp">
+                    <option>セレクトA</option>
+                    <option>セレクトB</option>
+                    <option>セレクトC</option>
+                  </select>
+                </div>
+              </div>
+            </td>
+            <td class="kintoneplugin-table-td-operation">
+              <button type="button" class="add btn1 kintoneplugin-button-add-row-image" title="Add row"
+                data-count=0></button>
+              <button type="button" class="remove kintoneplugin-button-remove-row-image" title="Delete this row"
+                data-count=0></button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      </br>
+    </form>
+  </body>
+  </link>
+  </head>
+  </meta>
+
+
+  </html>
