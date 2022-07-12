@@ -2,6 +2,17 @@
   "manifest_version": 1,
   "version": 4,
   "type": "APP",
+  "icon": "image/8046_タバコb.png",
+  "homepage_url": {
+    "ja": "https://github.com/nishikawa-r/subtable_view",
+    "en": "https://github.com/nishikawa-r/subtable_view",
+    "zh": "https://github.com/nishikawa-r/subtable_view"
+  },
+  "description": {
+    "ja": "関連レコード一覧のように関連する別アプリのサブテーブル行を一覧表示するプラグインです。",
+    "en": "This plug-in displays a list of sub-table rows of another related application like a related record list",
+    "zh": "此插件显示另一个相关应用程序的子表行列表，如相关记录列表"
+  },
   "desktop": {
     "js": [
       "https://js.cybozu.com/jquery/3.3.1/jquery.min.js",
@@ -13,7 +24,6 @@
       "css/desktop.css"
     ]
   },
-  "icon": "image/icon.png",
   "config": {
     "html": "html/config.html",
     "js": [
@@ -26,9 +36,8 @@
     ]
   },
   "name": {
-    "en": "subtablePlugin!!"
-  },
-  "description": {
-    "en": "subtablePlugin!!"
+    "ja": "subtablePlugin!!",
+    "en": "kintone Referenced Subtable plug-in",
+    "zh": "kintone Referenced Subtable plug-in"
   }
 }
