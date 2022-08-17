@@ -207,9 +207,13 @@
       button.innerHTML = this.settings.csvSvg;
       let csvData = "";
       let col = this.settings.columns.slice(1);
+      console.log("改造後!");
+      col = col.map(c => "\"" + c.replace(/\"/g, "\"\"") + "\"");
       csvData += col.join(',') + '\n';
+
       this.fields.data.forEach((e) => {
         let ele = e.slice(1);
+        ele = ele.map(el => "\"" + el.replace(/\"/g, "\"\"") + "\"");
         csvData += ele.join(',') + '\n';
       })
       var bom = new Uint8Array([0xEF, 0xBB, 0xBF]);
